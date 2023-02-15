@@ -6,17 +6,19 @@ This service helps you to import your logs into the database using commands, and
 
 ## Problem Description:
 
-Problem 1: We have a very large file that we need to parse and import into the database.
+### Problem 1: 
+We have a very large file that we need to parse and import into the database.
 
 solution :
 First, we create a command (log:import), then read it line by line, fetch the required items from each line and enter it into the database.
-In order not to face the problem of memory leak, we use lazicollection
+In order not to face the problem of memory leak, we use lazycollection
 which helps us to divide the data into smaller parts and enter the database.
 
-The second problem: we need an endpoint that filters the data with the parameters it receives and displays their sum.
+### Problem 2: 
+We need an endpoint that filters the data with the parameters it receives and displays their count.
 
 solution :
-We create a controller and refer the received parameters to the log service for filtering and get the total.
+We create a controller and refer the received parameters to the LogService for filtering and get the total.
 
 Notes :
 
