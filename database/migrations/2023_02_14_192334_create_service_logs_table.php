@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->text('service_log');
             $table->timestamp('date');
             $table->timestamps();
+
+            $table->index(['service_name', 'date']);
         });
     }
 
