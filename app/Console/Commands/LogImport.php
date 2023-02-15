@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use App\Contracts\Log\ILogReader;
+use App\Contracts\Log\ILogService;
 use App\Factories\ParserFactory;
 use App\Services\Log\LogFileReader;
-use App\Services\Log\LogService;
 use Illuminate\Console\Command;
 use Illuminate\Support\LazyCollection;
 
@@ -36,7 +36,7 @@ class LogImport extends Command
 
         $file = $reader->parse($this->argument('file'));
 
-        $logService = new LogService();
+        $logService = app(ILogService::class);
 
         LazyCollection::make(function () use ($reader, $file) {
             return $reader->readLogs($file);
